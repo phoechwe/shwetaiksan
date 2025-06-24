@@ -91,6 +91,11 @@
                         route="{{ route('admin.two-d-bet') }}" :active="request()->routeIs('admin.two-d-bet')" />
                 @endcan
 
+                @can('threed_ledger_access')
+                    <x-layout.sub.sidebar-item label="{{ __('3D လယ်ဂျာ') }}" icon="fa-solid fa-building-columns"
+                        route="{{ route('admin.threed-ledger') }}" :active="request()->routeIs('admin.threed-ledger')" />
+                @endcan
+                
                 @can('twod_threed_record_access')
                     <x-layout.sub.sidebar-item label="{{ __('2d/3d ထိုးစားရင်း') }}" icon="fa-solid fa-building-columns"
                         route="{{ route('admin.twod-threed-record') }}" :active="request()->routeIs('admin.twod-threed-record')" />

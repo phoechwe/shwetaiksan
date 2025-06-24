@@ -38,6 +38,7 @@ class DatabaseSeeder extends Seeder
             PermissionRoleTableSeeder::class,
             BankAccountSeeder::class,
             TwodnumberSeeder::class,
+            ThreedNumberSeeder::class,
           
         ]);
     }

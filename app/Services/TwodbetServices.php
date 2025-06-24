@@ -50,27 +50,6 @@ class TwodbetServices
     {
         $currentDate = $this->currentDate;
         $currentTime = $this->currentTime;
-
-        // $twodLedger = Twodledger::whereDate('date', $currentDate)
-        //     ->where(function ($query) use ($currentTime) {
-        //         $query
-        //             // Handle ranges that do not cross midnight
-        //             ->where(function ($q) use ($currentTime) {
-        //                 $q->whereColumn('start_time', '<=', 'end_time')
-        //                     ->whereTime('start_time', '<=', $currentTime)
-        //                     ->whereTime('end_time', '>=', $currentTime);
-        //             })
-        //             // Handle ranges that *do* cross midnight
-        //             ->orWhere(function ($q) use ($currentTime) {
-        //                 $q->whereColumn('start_time', '>', 'end_time')
-        //                     ->where(function ($subQ) use ($currentTime) {
-        //                         $subQ->whereTime('start_time', '<=', $currentTime)
-        //                             ->orWhereTime('end_time', '>=', $currentTime);
-        //                     });
-        //             });
-        //     })
-        //     ->first();
-
         $twodLedger = Twodledger::whereDate('date', $currentDate)
             ->orderBy('created_at', 'DESC')
             ->first();
@@ -80,7 +59,6 @@ class TwodbetServices
     public function getAllRecord($perPage = 40, $filterDate, $statusFilter, $search = "")
     {
         $twodledgerId = $this->getTwodLedger();
-        // dd($twodledgerId);
         $query = [
             "search" => $search,
             "with"   => ["user", "twodledger", "twodnumber"],

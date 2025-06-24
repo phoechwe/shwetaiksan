@@ -236,7 +236,26 @@ class PermissionTableSeeder extends Seeder
                 'id'    => 56,
                 'title' => 'twod_threed_record_access',
             ],
-
+            [
+                'id'    => 57,
+                'title' => 'threed_ledger_create',
+            ],
+            [
+                'id'    => 58,
+                'title' => 'threed_ledger_edit',
+            ],
+            [
+                'id'    => 59,
+                'title' => 'threed_ledger_show',
+            ],
+            [
+                'id'    => 60,
+                'title' => 'threed_ledger_delete',
+            ],
+            [
+                'id'    => 61,
+                'title' => 'threed_ledger_access',
+            ],
         ];
 
         Permission::insert($permissions);

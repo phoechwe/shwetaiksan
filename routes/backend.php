@@ -7,6 +7,7 @@ use App\Livewire\Backend\RoleComponent;
 use App\Livewire\Backend\CustomerComponent;
 use App\Livewire\Backend\DepositRequestComponent;
 use App\Livewire\Backend\PaymentRecordComponent;
+use App\Livewire\Backend\ThreedLedgerComponent;
 use App\Livewire\Backend\TotalBalanceComponent;
 use App\Livewire\Backend\TwoDledgerComponent;
 use App\Livewire\Backend\WithdrawlComponent;
@@ -42,6 +43,9 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'), 'verified',]
 
     // Two D Ledger
     Route::get('two-d-ledger/{action?}/{id?}',TwoDledgerComponent::class)->name('two-d-ledger');
+
+    // Two D Ledger
+    Route::get('threed-ledger/{action?}/{id?}',ThreedLedgerComponent::class)->name('threed-ledger');
 
     // Two D Bet
     Route::get('two-d-bet/{action?}/{id?}', \App\Livewire\Backend\TwodBetComponent::class)->name('two-d-bet');
