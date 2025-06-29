@@ -18,6 +18,9 @@ class ThreedLedger extends Model
         'created_at',
         'updated_at',
     ];
+    protected $casts = [
+        'amount' => 'integer',
+    ];
     public function threedLedgerNumbers()
     {
         return $this->hasMany(ThreedLedgerNumber::class, 'threed_ledger_id');

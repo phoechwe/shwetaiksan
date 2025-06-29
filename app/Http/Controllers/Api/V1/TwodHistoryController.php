@@ -32,4 +32,73 @@ class TwodHistoryController extends Controller
             'data' => $twodHistory,
         ]);
     }
+
+    public function TwodTopList()
+    {
+        $records = TwodThreedRecord::where('status', 2)
+            ->where('type', 1) // Assuming 1 is for 2D
+            ->selectRaw('user_id, SUM(amount) as total_amount')
+            ->groupBy('user_id')
+            ->orderByDesc('total_amount')
+            ->take(10)
+            ->with('user:id,name')
+            ->get();
+
+        if ($records->isEmpty()) {
+            return response()->json([
+                'status' => 404,
+                'message' => 'No top list found.',
+                'data' => [],
+            ]);
+        }
+
+        // Custom format the response
+        $topList = $records->map(function ($item) {
+            return [
+                'user_id' => $item->user_id,
+                'total_amount' => (int) $item->total_amount, // force string if needed
+                'user_name' => optional($item->user)->name,
+            ];
+        });
+
+        return response()->json([
+            'status' => 200,
+            'message' => 'Twod Top 10 List',
+            'data' => $topList,
+        ]);
+    }
+    public function ThreedTopList()
+    {
+        $records = TwodThreedRecord::where('status', 2)
+            ->where('type', 2) // Assuming 1 is for 2D
+            ->selectRaw('user_id, SUM(amount) as total_amount')
+            ->groupBy('user_id')
+            ->orderByDesc('total_amount')
+            ->take(10)
+            ->with('user:id,name')
+            ->get();
+
+        if ($records->isEmpty()) {
+            return response()->json([
+                'status' => 404,
+                'message' => 'No top list found.',
+                'data' => [],
+            ]);
+        }
+
+        // Custom format the response
+        $topList = $records->map(function ($item) {
+            return [
+                'user_id' => $item->user_id,
+                'total_amount' => (int) $item->total_amount, // force string if needed
+                'user_name' => optional($item->user)->name,
+            ];
+        });
+
+        return response()->json([
+            'status' => 200,
+            'message' => 'Threed Top 10 List',
+            'data' => $topList,
+        ]);
+    }
 }
