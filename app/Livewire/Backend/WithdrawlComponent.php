@@ -19,7 +19,7 @@ class WithdrawlComponent extends Component
 {
     use WithPagination, WithoutUrlPagination, AuthorizeRequests, HandleRedirections, HandlePageState, HandleFlashMessage;
     #[Layout('backend.layouts.app')]
-    public $currentPage = 'list', $account_name, $account_number, $bank_account_id,  $bank_type, $bank_name, $status, $customer_id, $customer_name, $search, $name, $user_id, $currentUrl, $amount, $created_at, $updated_at;
+    public $currentPage = 'list', $account_name, $account_number, $bank_account_id,$bank_type, $bank_name, $status, $customer_id, $customer_name, $search, $name, $user_id, $currentUrl, $amount, $created_at, $updated_at;
     protected $indexRoute = "admin/withdrawl";
     protected $createRoute, $editRoute, $showRoute, $withdrawlServices;
     public $statusFilter, $filterDate;
@@ -72,9 +72,9 @@ class WithdrawlComponent extends Component
     }
 
     // Actually mark the deposit as paid
-    public function markAsPaid()
+    public function markAsPaid($type)
     {
-        $this->withdrawlServices->calculateTotalWithdrawl($this->selectedWithdrawlId);
+        $this->withdrawlServices->calculateTotalWithdrawl($this->selectedWithdrawlId ,$type , $this->selectedAmount);
         $this->flashMessage('Paid successfully!', 'success');
         session()->flash('type', 'success');
         $this->confirmingPaidStatus = false;

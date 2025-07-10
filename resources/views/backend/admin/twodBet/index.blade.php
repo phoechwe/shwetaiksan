@@ -75,7 +75,7 @@
                         <td class="px-6 py-4">{{ $record->user->name ?? '-' }}</td>
                         <td class="px-6 py-4">{{ $record->twodnumber->number ?? '-' }}</td>
                         <td class="px-6 py-4">
-                            <span class="font-bold text-black dark:text-white">{{ $record->amount ?? '-' }} MMK</span>
+                            <span class="font-bold text-black dark:text-white">{{ $record->amount ?? '-' }} </span>
                         </td>
                         <td class="px-6 py-4">
                             <span

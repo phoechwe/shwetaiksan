@@ -78,12 +78,19 @@
                         <td class="px-6 py-4">
                             <button type="button"
                                 class="inline-flex items-center justify-center px-4 py-2 rounded-md text-white
-                                    {{ $deposit->status == 2 ? 'bg-green-600 cursor-not-allowed' : 'bg-yellow-500 hover:bg-yellow-400' }}"
-                                {{ $deposit->status == 2 ? 'disabled' : '' }}
+                                        @if ($deposit->status == 1) bg-yellow-500 hover:bg-yellow-400
+                                        @elseif ($deposit->status == 2)
+                                            bg-green-600 cursor-not-allowed
+                                        @elseif ($deposit->status == 3)
+                                            bg-red-600 cursor-not-allowed
+                                        @else
+                                        bg-gray-400 @endif"
+                                @if (in_array($deposit->status, [2, 3])) disabled @endif
                                 @if ($deposit->status == 1) wire:click="confirmMarkAsPaid({{ $deposit->id }})" @endif
                                 wire:loading.attr="disabled">
                                 {{ config('constant.paid_status.' . $deposit->status, '-') }}
                             </button>
+
                         </td>
 
 
@@ -123,7 +130,7 @@
                 @empty
                     <tr>
                         <td colspan="10" class="px-25 py-4 text-center text-gray-500 dark:text-gray-400">
-                           ယနေ့အတွက် ငွေထုတ်စာရင်းများမရှိပါ.
+                            ယနေ့အတွက် ငွေထုတ်စာရင်းများမရှိပါ.
                         </td>
                     </tr>
                 @endforelse

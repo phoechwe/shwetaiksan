@@ -12,7 +12,7 @@
 </div>
 
 <div class="mt-6">
-    {{ $button }}
+    {{ $button ?? ''}}
 </div>
 
 </div>

@@ -35,7 +35,7 @@ class PaymentHistoryController extends Controller
                 'data' => $withdrawals
             ]);
         } else {
-            $deposits = DepositRequest::where('user_id', $request->user_id)->get();
+            $deposits = DepositRequest::where('user_id', $request->user_id)->get();//for asdc 
 
             return response()->json([
                 'status' => 200,

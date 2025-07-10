@@ -20,9 +20,10 @@ class TwodThreedRecordComponent extends Component
     use WithPagination, WithoutUrlPagination, AuthorizeRequests, HandleRedirections, HandlePageState, HandleFlashMessage;
 
     #[Layout('backend.layouts.app')]
-    public $currentPage = 'list', $search = '', $ledger_id, $amount, $start_time, $end_time, $session_time, $date, $created_date, $currentUrl, $total_balance;
+    public $currentPage = 'list', $ledger_id, $amount, $start_time, $end_time, $session_time, $date, $created_date, $currentUrl, $total_balance;
     protected $indexRoute = "admin/twod-threed-record";
     protected $createRoute, $editRoute, $showRoute, $twodlegerServices;
+    public $statusFilter, $filterDate , $search = '' ;
 
 
     public function boot(TwodledgerServices $twodlegerServices)
@@ -66,12 +67,14 @@ class TwodThreedRecordComponent extends Component
             $this->flashMessage('Ledger not found!', 'error');
         }
     }
+    public function filterStatus() {}
+
     public function render()
     {
         switch ($this->currentPage) {
             case 'show':
                 return view('backend.admin.twodThreedRecord.show', [
-                    'twodledgerNumberBalances' => $this->twodlegerServices->getTwoDLedgerNumberBalance($this->ledger_id),
+                    'twodledgerNumberBalances' => $this->twodlegerServices->getTwoDLedgerNumberBalance($this->ledger_id,$perPage = 40, $this->filterDate, $this->statusFilter, $search = ""),
                 ]);
             default:
                 return view('backend.admin.twodThreedRecord.index', [

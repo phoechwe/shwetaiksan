@@ -55,6 +55,7 @@ class WithdrawlServices
             "or_where" => [
                 ['status', '=', 1],
                 ['status', '=', 2],
+                ['status', '=', 3],
             ],
 
             "search_columns" => [
@@ -87,26 +88,34 @@ class WithdrawlServices
         return $this->withdrawlRepository->paginateData($perPage, $query);
     }
 
-    public function calculateTotalWithdrawl($id)
+    public function calculateTotalWithdrawl($id , $type , $amount = null)
     {
         $withdrawl = \App\Models\Withdrawl::find($id);
-        if ($withdrawl->status == 1) {
-            DB::transaction(function () use ($withdrawl) {
-                $withdrawl->status = 2;
+        if ($type == 2) {
+            DB::transaction(function () use ($withdrawl,$type) {
+                $withdrawl->status = $type;
                 $withdrawl->save();
-
-                PaymentRecord::create([
-                    'user_id' => $withdrawl->user_id,
-                    'amount' => $withdrawl->amount,
-                    'account_number' => $withdrawl->account_number,
-                    'account_name' => $withdrawl->account_name,
-                    'balance_type' => 2,
-                ]);
-
-                $user = User::find($withdrawl->user_id);
-                $user->total_balance = $user->total_balance - $withdrawl->amount;
-                $user->update();
             });
+        }
+
+        if($type == 3)
+        {
+             DB::transaction(function () use ($withdrawl,$type) {
+                $withdrawl->status = $type;
+                $withdrawl->save();
+            });
+            PaymentRecord::create([
+                'user_id' => $withdrawl->user_id,
+                'amount' => $withdrawl->amount,
+                'account_number' => $withdrawl->account_number,
+                'account_name' => $withdrawl->account_name,
+                'balance_type' => 3,
+            ]);
+
+            $user = User::find($withdrawl->user_id);
+            $user->total_balance = $user->total_balance + $amount;
+            $user->update();
+
         }
     }
 }

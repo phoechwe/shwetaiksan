@@ -104,7 +104,7 @@ class TwodledgerServices
     }
 
 
-    public function getTwoDLedgerNumberBalance($ledgerId)
+    public function getTwoDLedgerNumberBalance($ledgerId,$perPage = 40, $filterDate, $statusFilter, $search = "")
     {
         $twodLedger = Twodledger::with('twodledgerNumbers')->find($ledgerId);
         $allNumbers = Twodnumber::orderBy('number')->get();

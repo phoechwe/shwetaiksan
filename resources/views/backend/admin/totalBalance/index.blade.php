@@ -36,7 +36,7 @@
                         <td class="px-6 py-4">{{ $index + 1 }}</td>
                         <td class="px-6 py-4">{{ $user->name }}</td>
                         <td class="px-6 py-4">
-                            <span class="font-bold text-black dark:text-white">{{ $user->total_balance ?? '-' }} MMK</span>
+                            <span class="font-bold text-black dark:text-white">{{ $user->total_balance ?? '-' }}</span>
                         </td>
                         <td class="px-6 py-4">{{ $user->updated_at ? $user->updated_at->format('d M, Y') : '-' }}</td>
                         <td class="px-6 py-4 relative">

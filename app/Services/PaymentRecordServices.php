@@ -50,6 +50,7 @@ class PaymentRecordServices
             "or_where" => [
                 ['balance_type', '=', 1],
                 ['balance_type', '=', 2],
+                ['balance_type', '=', 3],
             ],
         ];
     

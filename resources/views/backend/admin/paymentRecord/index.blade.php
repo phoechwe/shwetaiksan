@@ -65,7 +65,20 @@
                         <td class="px-6 py-4">{{ $index + 1 }}</td>
                         <td class="px-6 py-4">{{ $record->user->name ?? '-' }}</td>
                         <td class="px-6 py-4">
-                            <span class="font-bold text-black dark:text-white">{{ $record->amount ?? '-' }} MMK</span>
+                            {{-- <span class="font-bold text-black dark:text-white">{{ $record->amount ?? '-' }} MMK</span> --}}
+                            <span class="font-bold text-black dark:text-white">
+                                <span @class([
+                                    'font-bold text-black dark:text-white',
+                                    'text-green-500 dark:text-green-500' => in_array($record->balance_type, [
+                                        1,
+                                        3,
+                                    ]),
+                                    'text-red-400' => $record->balance_type == 2,
+                                ])>
+                                    {{ in_array($record->balance_type, [1, 3]) ? '+' : ($record->balance_type == 2 ? '-' : '') }}
+                                    {{ $record->amount ?? '-' }}
+                                </span>
+                            </span>
                         </td>
 
                         <td class="px-6 py-4">{{ $record->account_number ?? '-' }}</td>
@@ -78,8 +91,8 @@
                             <x-admin.action-dropdown>
                                 @can('deposit_request_show')
                                     <li class="hover:bg-gray-100 dark:hover:bg-gray-600">
-                                        <a href="{{ route('admin.payment-record', ['action' => 'show', 'id' => $record->id]) }}" wire:navigate
-                                            class="flex items-center gap-2 px-4 py-2">
+                                        <a href="{{ route('admin.payment-record', ['action' => 'show', 'id' => $record->id]) }}"
+                                            wire:navigate class="flex items-center gap-2 px-4 py-2">
                                             <i class="fa-solid fa-eye"></i> Show
                                         </a>
                                     </li>

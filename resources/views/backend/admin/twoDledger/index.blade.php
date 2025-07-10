@@ -45,17 +45,17 @@
                         <td class="px-6 py-4">
                             <span
                                 class="font-bold text-black dark:text-white">{{ number_format($ledger->amount ?? '-') }}</span>
-                            <span class="font-bold text-black dark:text-white">MMK</span>
+                            {{-- <span class="font-bold text-black dark:text-white">MMK</span> --}}
                         </td>
                         <td class="px-6 py-4">
                             <span
                                 class="font-bold text-black dark:text-white">{{ number_format($ledger->amount * 100 ?? '-') }}</span>
-                            <span class="font-bold text-black dark:text-white">MMK</span>
+                            {{-- <span class="font-bold text-black dark:text-white">MMK</span> --}}
                         </td>
                         <td class="px-6 py-4">
                             <span
                                 class="font-bold text-black dark:text-white">{{ number_format($ledger->twodledgerNumbers->sum('amount')) }}</span>
-                            <span class="font-bold text-black dark:text-white">MMK</span>
+                            {{-- <span class="font-bold text-black dark:text-white">MMK</span> --}}
                         </td>
                         <td class="px-6 py-4">
                             {{ \Carbon\Carbon::parse($ledger->start_time)->format('g:i A') ?? '-' }}

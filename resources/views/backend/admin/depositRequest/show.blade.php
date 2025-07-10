@@ -23,7 +23,7 @@
 
             <span class="ml-2 text-sm font-medium overflow-hidden  text-ellipsis">
                 {{ $amount ?? '0' }}
-                <span class="font-bold text-black dark:text-white">MMK</span>
+                {{-- <span class="font-bold text-black dark:text-white">MMK</span> --}}
             </span>
         </div>
     </x-admin.showPage.item>

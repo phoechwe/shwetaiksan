@@ -36,11 +36,11 @@
 
                         <td class="px-6 py-4">
                             <span class="font-bold text-black dark:text-white">{{ $ledger['limit_amount'] ?? 0 }}</span>
-                            <span class="font-bold text-black dark:text-white">MMK</span>
+                            {{-- <span class="font-bold text-black dark:text-white">MMK</span> --}}
                         </td>
                         <td class="px-6 py-4">
                             <span class="font-bold text-black dark:text-white">{{ $ledger['total_bet_amount'] ?? 0 }}</span>
-                            <span class="font-bold text-black dark:text-white">MMK</span>
+                            {{-- <span class="font-bold text-black dark:text-white">MMK</span> --}}
                         </td>
 
                     </tr>

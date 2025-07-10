@@ -57,6 +57,8 @@ class TwodledgerController extends Controller
 
     public function twodBet(Request $request)
     {
+        date_default_timezone_set('Asia/Yangon');
+
         $validator = Validator::make($request->all(), [
             'bets' => 'required|array|min:1',
             'bets.*.amount' => 'required|numeric|min:1',
@@ -76,7 +78,7 @@ class TwodledgerController extends Controller
         $currentTime = date('H:i:s');
 
         // Find active Two D Ledger
-        $twodLedger = Twodledger::where('date', $currentDate)
+        $twodLedger = Twodledger::where('date', $currentDate) //Need start time and isPaid this ledger 
             ->where('end_time', '>=', $currentTime)
             ->first();
 

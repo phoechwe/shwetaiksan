@@ -3,8 +3,7 @@
         "balance_type"=> [
             1 => "ငွေသွင်း",
             2 => "ငွေထုတ်",
-            3 => "2d အနိုင်",
-            4 => "3d အနိုင်",
+            3 => "ငွေထုတ်(Reject)",
         ],
         "paid_status"=> [
             1 => "Pending",
@@ -14,6 +13,8 @@
         "withdrawl_status"=> [
             1 => "Pending",
             2 => "Accept",
+            3 => "Rejected",
+
         ],
         "session_time" => [
             1 => "မနက်ပိုင်း",

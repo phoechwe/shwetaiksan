@@ -67,7 +67,7 @@
                         <td class="px-6 py-4">{{ $index + 1 }}</td>
                         <td class="px-6 py-4">{{ $deposit->user->name ?? '-' }}</td>
                         <td class="px-6 py-4">
-                            <span class="font-bold text-black dark:text-white">{{ $deposit->amount ?? '-' }} MMK</span>
+                            <span class="font-bold text-black dark:text-white">{{ $deposit->amount ?? '-' }} </span>
                         </td>
                         <td class="px-6 py-4">{{ $deposit->working_number ?? '-' }}</td>
                         <td class="px-6 py-4">{{ $deposit->account_name ?? '-' }}</td>

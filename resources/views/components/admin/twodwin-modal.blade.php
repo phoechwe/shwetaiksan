@@ -24,21 +24,27 @@
                 <div class="flex flex-wrap -mx-2">
                     <div class="w-full mb-4">
                         <x-admin.label for="twodNumber" label="2d နံပါတ်" required="true" />
-                        <x-admin.inputs.input id="twodNumber" label="twodNumber" type="number" wire:model="twodNumber" require
-                            class="additional-classes" error="{{ $errors->has('amount') }}" />
+                        <x-admin.inputs.input id="twodNumber" label="twodNumber" type="number" wire:model="twodNumber"
+                            require class="additional-classes" error="{{ $errors->has('amount') }}" />
                     </div>
                 </div>
 
                 <div class="flex flex-wrap -mx-2">
                     <div class="w-full mb-4">
                         <x-admin.label label="လျော်မည့်ဆ" required="true" />
-                        <x-admin.inputs.input type="number" wire:model="percentageAmount" class="additional-classes" require
-                            error="{{ $errors->has('amount') }}" />
+                        <x-admin.inputs.input type="number" wire:model="percentageAmount" class="additional-classes"
+                            require error="{{ $errors->has('amount') }}" />
                     </div>
                 </div>
 
                 <div class="flex justify-end rounded-b-lg">
-                    <x-admin.save-button function="markAsPaid" text="လျော်မည်"></x-save-button>
+                    {{-- <x-admin.save-button function="markAsPaid" text="လျော်မည်"></x-save-button> --}}
+                    <button type="button"
+                        @click="if (confirm('Are you sure you want to mark this as paid?')) { $wire.markAsPaid() }"
+                        class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">
+                        လျော်မည်
+                    </button>
+
                 </div>
             </div>
         </div>
