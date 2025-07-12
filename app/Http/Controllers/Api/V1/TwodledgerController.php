@@ -20,7 +20,8 @@ class TwodledgerController extends Controller
         $currentdate = date('Y-m-d');
         $currentTime = date('H:i:s');
 
-        $twodLedger = Twodledger::where('date', $currentdate)
+          $twodLedger = Twodledger::where('date', $currentdate)
+            ->where('start_time', '<=', $currentTime)
             ->where('end_time', '>=', $currentTime)
             ->first();
 
@@ -78,7 +79,8 @@ class TwodledgerController extends Controller
         $currentTime = date('H:i:s');
 
         // Find active Two D Ledger
-        $twodLedger = Twodledger::where('date', $currentDate) //Need start time and isPaid this ledger 
+    $twodLedger = Twodledger::where('date', $currentDate) //Need start time and isPaid this ledger 
+            ->where('start_time', '<=', $currentTime)
             ->where('end_time', '>=', $currentTime)
             ->first();
 

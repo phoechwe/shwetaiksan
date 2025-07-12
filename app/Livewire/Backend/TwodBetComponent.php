@@ -24,14 +24,19 @@ class TwodBetComponent extends Component
     // For Filter
     public $statusFilter, $filterDate, $paidPercentage, $isPaid ;
     //For Model box
-    public $percentageAmount, $twodNumber ;
+    public $percentageAmount, $twodNumber ,$currentdate , $currentTime;
     protected $indexRoute = "admin/two-d-bet";
     protected $createRoute, $editRoute, $showRoute, $twodbetService;
     public $paidStatus = false;
     public function boot(TwodbetServices $twodbetService)
     {
+        date_default_timezone_set('Asia/Yangon');
+
+        $this->currentdate = date('Y-m-d');
+        $this->currentTime = date('H:i:s');
+
         $this->twodbetService = $twodbetService;
-        $this->isPaid = $this->twodbetService->getTwodLedger()->isPaid ?? 1;
+        $this->isPaid = $this->twodbetService->getTwodLedger()->isPaid ?? 2;
         $this->ledgerId = $this->twodbetService->getTwodLedger()->id ?? null;
         $this->authorizeAccess('payment_record_access');
     }
