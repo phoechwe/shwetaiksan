@@ -23,6 +23,7 @@ class TwodledgerController extends Controller
           $twodLedger = Twodledger::where('date', $currentdate)
             ->where('start_time', '<=', $currentTime)
             ->where('end_time', '>=', $currentTime)
+            ->where('isPaid',1)
             ->first();
 
         if (!$twodLedger) {

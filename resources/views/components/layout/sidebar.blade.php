@@ -95,6 +95,11 @@
                     <x-layout.sub.sidebar-item label="{{ __('3D လယ်ဂျာ') }}" icon="fa-solid fa-building-columns"
                         route="{{ route('admin.threed-ledger') }}" :active="request()->routeIs('admin.threed-ledger')" />
                 @endcan
+
+                @can('two_d_ledger_access')
+                    <x-layout.sub.sidebar-item label="{{ __('3D စာရင်းမှတ်တမ်း') }}" icon="fa-solid fa-building-columns"
+                        route="{{ route('admin.threed-bet') }}" :active="request()->routeIs('admin.threed-bet')" />
+                @endcan
                 
                 @can('twod_threed_record_access')
                     <x-layout.sub.sidebar-item label="{{ __('2d/3d ထိုးစားရင်း') }}" icon="fa-solid fa-building-columns"

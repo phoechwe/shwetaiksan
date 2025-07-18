@@ -50,6 +50,9 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'), 'verified',]
     // Two D Bet
     Route::get('two-d-bet/{action?}/{id?}', \App\Livewire\Backend\TwodBetComponent::class)->name('two-d-bet');
 
+    // Two D Bet
+    Route::get('threed-bet/{action?}/{id?}', \App\Livewire\Backend\ThreedBetComponent::class)->name('threed-bet');
+
     //Two D Three D Record
     Route::get('twod-threed-record/{action?}/{id?}', \App\Livewire\Backend\TwodThreedRecordComponent::class)->name('twod-threed-record');
 });

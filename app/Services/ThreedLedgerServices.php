@@ -27,10 +27,11 @@ class ThreedLedgerServices
     public function getTodayLedger()
     {
         $currentDate = $this->currentDate;
-        $twodLedger = Twodledger::whereDate('date', $currentDate)
-            ->orderBy('created_at' , 'DESC')
+        $threedLedger = ThreedLedger::where('start_date', "<=", $currentDate)
+            ->where('end_date', '>=', $currentDate)
+            ->orderBy('created_at', 'DESC')
             ->first();
-        return $twodLedger;
+        return $threedLedger;
     }
     public function createThreedledger($data)
     {

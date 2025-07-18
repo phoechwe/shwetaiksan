@@ -29,7 +29,7 @@ class ThreedLedgerController extends Controller
                     $q->where('end_date', $currentDate)
                         ->where('end_time', '>=', $currentTime); 
                 });
-        })->first();
+        })->where('status' ,1)->first();
 
 
         if (!$threedLedger) {

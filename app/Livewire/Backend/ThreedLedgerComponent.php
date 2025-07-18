@@ -28,7 +28,7 @@ class ThreedLedgerComponent extends Component
     public function boot(ThreedLedgerServices $threedLedgerServices)
     {
         $this->threedLedgerServices = $threedLedgerServices;
-        $this->todayLedgerPaid = $threedLedgerServices->getTodayLedger()->isPaid ?? null;
+        $this->todayLedgerPaid = $threedLedgerServices->getTodayLedger()->status ?? null;
         abort_if(Gate::denies('total_balance_access'), Response::HTTP_FORBIDDEN, '403 FORBIDDEN');
     }
 
