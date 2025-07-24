@@ -13,7 +13,7 @@ class UserTableSeeder extends Seeder
   {
     $users = [
       [
-
+        'id'             => 10010,
         'name'           => 'Admin',
         'email'          => 'admin@admin.com',
         'password'       => bcrypt('password'),
@@ -22,7 +22,7 @@ class UserTableSeeder extends Seeder
         'updated_at'     => '2021-09-02 00:00:00',
       ],
       [
-
+        'id'             => 10011, // <-- ADD this
         'name'           => 'Sub Admin',
         'email'          => 'admin@gmail.com',
         'password'       => bcrypt('password'),

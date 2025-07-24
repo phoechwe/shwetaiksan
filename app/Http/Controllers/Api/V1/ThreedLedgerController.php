@@ -27,9 +27,9 @@ class ThreedLedgerController extends Controller
             $query->where('end_date', '>', $currentDate)
                 ->orWhere(function ($q) use ($currentDate, $currentTime) {
                     $q->where('end_date', $currentDate)
-                        ->where('end_time', '>=', $currentTime); 
+                        ->where('end_time', '>=', $currentTime);
                 });
-        })->where('status' ,1)->first();
+        })->where('status', 1)->first();
 
 
         if (!$threedLedger) {
@@ -79,6 +79,7 @@ class ThreedLedgerController extends Controller
                 'data' => []
             ], 200);
         }
+        date_default_timezone_set('Asia/Yangon');
 
         $currentDate = date('Y-m-d');
         $currentTime = date('H:i:s');
